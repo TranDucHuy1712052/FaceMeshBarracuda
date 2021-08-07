@@ -676,18 +676,24 @@ MonoBehaviour:
     pointIndex2: 14
     minDistance: 0.005
     maxDistance: 0.1
+    minScaleFactor: 0.1
+    maxScaleFactor: 1
     reverseValue: 0
   - blendShapeName: eyeBlinkLeft
     pointIndex1: 374
     pointIndex2: 386
-    minDistance: 0.01
-    maxDistance: 0.04
+    minDistance: 0.02
+    maxDistance: 0.045
+    minScaleFactor: 0.1
+    maxScaleFactor: 1
     reverseValue: 1
   - blendShapeName: eyeBlinkRight
     pointIndex1: 145
     pointIndex2: 159
-    minDistance: 0.01
-    maxDistance: 0.04
+    minDistance: 0.02
+    maxDistance: 0.045
+    minScaleFactor: 0.1
+    maxScaleFactor: 1
     reverseValue: 1
 --- !u!1 &47300062733922486
 GameObject:

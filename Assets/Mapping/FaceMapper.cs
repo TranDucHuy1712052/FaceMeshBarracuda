@@ -14,6 +14,8 @@ public class FaceMappingRule
 
     public float minDistance;
     public float maxDistance;
+    public float minScaleFactor = 0.3f;            // to be multiplied for scale invariance
+    public float maxScaleFactor = 1.5f;
     
     public bool reverseValue;            // 100 - normalized value
 }
@@ -63,8 +65,9 @@ public class FaceMapper : MonoBehaviour
             var distance = distanceVector.magnitude;
             Debug.Log(rule.blendShapeName + ": " + distance.ToString("F8"));
 
-            var maxDistance = rule.maxDistance * boundingBoxHeight;
-            var minDistance = rule.minDistance * boundingBoxHeight;     //face crop scale invariance
+            float scaleFactor = (float) Math.Sqrt( boundingBoxHeight * boundingBoxWidth * 0.8f);
+            var maxDistance = rule.maxDistance * scaleFactor;
+            var minDistance = rule.minDistance * scaleFactor;
             var blendShapeWeight = MinMaxNormalize(distance, minDistance, maxDistance)  * 100;                   // normalize to [0, 100]
 
             if (rule.reverseValue)
