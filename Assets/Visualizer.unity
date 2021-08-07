@@ -668,7 +668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a5a0ee96ebcb141ab9d2eb4a5f2ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinnedMeshRenderer: {fileID: 3713120925634634699}
+  faceSkinnedMeshRenderer: {fileID: 3713120925634634699}
+  teethSkinnedMeshRenderer: {fileID: 4438088750266624643}
   mappingRules:
   - blendShapeName: jawOpen
     pointIndex1: 13

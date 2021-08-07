@@ -20,7 +20,8 @@ public class FaceMappingRule
 
 public class FaceMapper : MonoBehaviour
 {
-    public SkinnedMeshRenderer SkinnedMeshRenderer;
+    public SkinnedMeshRenderer faceSkinnedMeshRenderer;
+    public SkinnedMeshRenderer teethSkinnedMeshRenderer;
     public List<FaceMappingRule> mappingRules;
 
     private Vector3 DistanceFromTwoPoint(Vector3 p1, Vector3 p2)
@@ -56,7 +57,7 @@ public class FaceMapper : MonoBehaviour
 
         foreach (FaceMappingRule rule in mappingRules)
         {
-            var blendShapeIdx = SkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(rule.blendShapeName);
+            var blendShapeIdx = faceSkinnedMeshRenderer.sharedMesh.GetBlendShapeIndex(rule.blendShapeName);
             var distanceVector = (MakePositionVectorOfPoint(verticesData, rule.pointIndex1) - MakePositionVectorOfPoint(verticesData, rule.pointIndex2));
             //Debug.Log(rule.blendShapeName + ": " + distanceVector.ToString("F4"));
             var distance = distanceVector.magnitude;
@@ -71,7 +72,8 @@ public class FaceMapper : MonoBehaviour
             if (blendShapeWeight < 0) blendShapeWeight = 0;
             if (blendShapeWeight > 100) blendShapeWeight = 100;
 
-            SkinnedMeshRenderer.SetBlendShapeWeight(blendShapeIdx, blendShapeWeight);    
+            faceSkinnedMeshRenderer.SetBlendShapeWeight(blendShapeIdx, blendShapeWeight);
+            teethSkinnedMeshRenderer?.SetBlendShapeWeight(blendShapeIdx, blendShapeWeight);      // face and teeth must have equal blend shapes setting
         }
     }
 }
